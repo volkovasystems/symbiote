@@ -1,7 +1,7 @@
 {
   "name": "symbiote",
   "description": "Attach child initialization to parent initialization.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "symbiote.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>"

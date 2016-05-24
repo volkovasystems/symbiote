@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
   "scripts": {

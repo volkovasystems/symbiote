@@ -77,10 +77,18 @@ var symbiote = function symbiote( child, parent ){
 		throw new Error( "child is not a function" );
 	}
 
-	if( typeof parent != "function" ){
+	if( typeof parent != "function" &&
+ 		typeof child.prototype.parent != "function" )
+	{
 		console.log( "fatal, parent is not a function" );
 
 		throw new Error( "parent is not a function" );
+	}
+
+	if( typeof parent != "function" &&
+		typeof child.prototype.parent == "function" )
+	{
+		parent = child.prototype.parent;
 	}
 
 	var childInitialize = child.prototype.initialize;
