@@ -1,0 +1,27 @@
+{
+  "name": "symbiote",
+  "description": "Attach child initialization to parent initialization.",
+  "version": "0.0.0",
+  "main": "symbiote.js",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "class-initialization",
+    "initialization",
+    "symbiosis"
+  ],
+  "homepage": "https://github.com/volkovasystems/symbiote",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "harden": "^0.2.1",
+    "raze": "^0.0.0"
+  }
+}
