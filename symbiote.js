@@ -3,6 +3,7 @@
 /*:
 	@module-license:
 		The MIT License (MIT)
+		@mit-license
 
 		Copyright (@c) 2016 Richeve Siodina Bebedor
 		@email: richeve.bebedor@gmail.com
@@ -28,20 +29,28 @@
 
 	@module-configuration:
 		{
-			"packageName": "symbiote",
-			"fileName": "symbiote.js",
-			"moduleName": "symbiote",
-			"authorName": "Richeve S. Bebedor",
-			"authorEMail": "richeve.bebedor@gmail.com",
-			"repository": "git@github.com:volkovasystems/symbiote.git",
-			"testCase": "symbiote-test.js",
-			"isGlobal": true
+			"package": "symbiote",
+			"path": "symbiote/symbiote.js",
+			"file": "symbiote.js",
+			"module": "symbiote",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"repository": "https://github.com/volkovasystems/symbiote.git",
+			"test": "symbiote-test.js",
+			"global": true
 		}
 	@end-module-configuration
 
 	@module-documentation:
 
 	@end-module-documentation
+
+	@include:
+		{
+			"harden": "harden",
+			"raze": "raze"
+		}
+	@end-include
 */
 
 if( typeof window == "undefined" ){
@@ -72,7 +81,9 @@ var symbiote = function symbiote( child, parent ){
 	*/
 
 	if( typeof child != "function" ){
-		console.log( "fatal, child is not a function" );
+		if( !symbiote.silent ){
+			console.log( "fatal, child is not a function" );
+		}
 
 		throw new Error( "child is not a function" );
 	}
@@ -80,7 +91,9 @@ var symbiote = function symbiote( child, parent ){
 	if( typeof parent != "function" &&
  		typeof child.prototype.parent != "function" )
 	{
-		console.log( "fatal, parent is not a function" );
+		if( !symbiote.silent ){
+			console.log( "fatal, parent is not a function" );
+		}
 
 		throw new Error( "parent is not a function" );
 	}
@@ -95,13 +108,17 @@ var symbiote = function symbiote( child, parent ){
 	var parentInitialize = parent.prototype.initialize;
 
 	if( typeof childInitialize != "function" ){
-		console.log( "fatal, child initialize is not a function" );
+		if( !symbiote.silent ){
+			console.log( "fatal, child initialize is not a function" );
+		}
 
 		throw new Error( "child initialize is not a function" );
 	}
 
 	if( typeof parentInitialize != "function" ){
-		console.log( "fatal, parent initialize is not a function" );
+		if( !symbiote.silent ){
+			console.log( "fatal, parent initialize is not a function" );
+		}
 
 		throw new Error( "parent initialize is not a function" );
 	}
@@ -114,7 +131,7 @@ var symbiote = function symbiote( child, parent ){
 			if( child.prototype.initialize.toString( ) != childInitialize.toString( ) ){
 				childInitialize.apply( this, raze( arguments ) );
 
-			}else{
+			}else if( !symbiote.silent ){
 				console.log( "warning, recursive calls to child initialize",
 					"with symbiotic initialization",
 					"child initialize is not called properly",
@@ -125,7 +142,9 @@ var symbiote = function symbiote( child, parent ){
 			return this;
 
 		}catch( error ){
-			console.log( "fatal, error in symbiotic initialization", error );
+			if( !symbiote.silent ){
+				console.log( "fatal, error in symbiotic initialization", error );
+			}
 
 			throw error;
 		}
@@ -134,14 +153,12 @@ var symbiote = function symbiote( child, parent ){
 	return child;
 };
 
+symbiote.silent = true;
+
+symbiote.setSilent = function setSilent( silent ){
+	symbiote.silent = silent;
+};
+
 if( typeof module != "undefined" ){
 	module.exports = symbiote;
-}
-
-if( typeof global != "undefined" ){
-	harden
-		.bind( symbiote )( "globalize",
-			function globalize( ){
-				harden.bind( global )( "symbiote", symbiote );
-			} );
 }

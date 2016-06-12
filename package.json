@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/volkovasystems/symbiote#readme",
   "dependencies": {
-    "harden": "^0.2.1",
-    "raze": "0.0.0"
+    "harden": "^0.3.1",
+    "raze": "0.0.4"
   }
 }
