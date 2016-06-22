@@ -1,7 +1,7 @@
 {
   "name": "symbiote",
   "description": "Attach child initialization to parent initialization.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "symbiote.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
@@ -21,7 +21,7 @@
     "tests"
   ],
   "dependencies": {
-    "harden": "^0.3.1",
-    "raze": "^0.0.4"
+    "raze": "^0.0.5",
+    "harden": "^0.3.2"
   }
 }
