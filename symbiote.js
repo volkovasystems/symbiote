@@ -70,6 +70,8 @@ if( typeof window != "undefined" &&
 	throw new Error( "raze is not defined" );
 }
 
+harden( "DELEGATE_CLASS", "delegate-class" );
+
 var symbiote = function symbiote( child, parent ){
 	/*:
 		@meta-configuration:
@@ -102,6 +104,18 @@ var symbiote = function symbiote( child, parent ){
 		typeof child.prototype.parent == "function" )
 	{
 		parent = child.prototype.parent;
+	}
+
+	if( child.DELEGATE_CLASS == DELEGATE_CLASS &&
+		child.prototype.parent )
+	{
+		child = child.prototype.parent;
+	}
+
+	if( parent.DELEGATE_CLASS == DELEGATE_CLASS &&
+		parent.prototype.parent )
+	{
+		parent = parent.prototype.parent;
 	}
 
 	var childInitialize = child.prototype.initialize;
