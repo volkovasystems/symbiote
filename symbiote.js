@@ -1,6 +1,6 @@
 "use strict";
 
-/*:
+/*;
 	@module-license:
 		The MIT License (MIT)
 		@mit-license
@@ -47,21 +47,13 @@
 
 	@include:
 		{
-			"harden": "harden",
 			"raze": "raze"
 		}
 	@end-include
 */
 
 if( typeof window == "undefined" ){
-	var harden = require( "harden" );
 	var raze = require( "raze" );
-}
-
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
-	throw new Error( "harden is not defined" );
 }
 
 if( typeof window != "undefined" &&
@@ -70,10 +62,8 @@ if( typeof window != "undefined" &&
 	throw new Error( "raze is not defined" );
 }
 
-harden( "DELEGATE_CLASS", "delegate-class" );
-
 var symbiote = function symbiote( child, parent ){
-	/*:
+	/*;
 		@meta-configuration:
 			{
 				"child:required": "function",
@@ -104,18 +94,6 @@ var symbiote = function symbiote( child, parent ){
 		typeof child.prototype.parent == "function" )
 	{
 		parent = child.prototype.parent;
-	}
-
-	if( child.DELEGATE_CLASS == DELEGATE_CLASS &&
-		child.prototype.parent )
-	{
-		child = child.prototype.parent;
-	}
-
-	if( parent.DELEGATE_CLASS == DELEGATE_CLASS &&
-		parent.prototype.parent )
-	{
-		parent = parent.prototype.parent;
 	}
 
 	var childInitialize = child.prototype.initialize;
