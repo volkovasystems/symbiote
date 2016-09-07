@@ -73,20 +73,12 @@ var symbiote = function symbiote( child, parent ){
 	*/
 
 	if( typeof child != "function" ){
-		if( !symbiote.silent ){
-			console.log( "fatal, child is not a function" );
-		}
-
 		throw new Error( "child is not a function" );
 	}
 
 	if( typeof parent != "function" &&
  		typeof child.prototype.parent != "function" )
 	{
-		if( !symbiote.silent ){
-			console.log( "fatal, parent is not a function" );
-		}
-
 		throw new Error( "parent is not a function" );
 	}
 
@@ -100,18 +92,10 @@ var symbiote = function symbiote( child, parent ){
 	var parentInitialize = parent.prototype.initialize;
 
 	if( typeof childInitialize != "function" ){
-		if( !symbiote.silent ){
-			console.log( "fatal, child initialize is not a function" );
-		}
-
 		throw new Error( "child initialize is not a function" );
 	}
 
 	if( typeof parentInitialize != "function" ){
-		if( !symbiote.silent ){
-			console.log( "fatal, parent initialize is not a function" );
-		}
-
 		throw new Error( "parent initialize is not a function" );
 	}
 
@@ -122,33 +106,16 @@ var symbiote = function symbiote( child, parent ){
 			//: This will prevent recursive calls.
 			if( child.prototype.initialize.toString( ) != childInitialize.toString( ) ){
 				childInitialize.apply( this, raze( arguments ) );
-
-			}else if( !symbiote.silent ){
-				console.log( "warning, recursive calls to child initialize",
-					"with symbiotic initialization",
-					"child initialize is not called properly",
-					child.name,
-					parent.name );
 			}
 
 			return this;
 
 		}catch( error ){
-			if( !symbiote.silent ){
-				console.log( "fatal, error in symbiotic initialization", error );
-			}
-
-			throw error;
+			throw new Error( "failed executing mutual initialize, " + error.stack );
 		}
 	};
 
 	return child;
-};
-
-symbiote.silent = true;
-
-symbiote.setSilent = function setSilent( silent ){
-	symbiote.silent = silent;
 };
 
 if( typeof module != "undefined" ){
