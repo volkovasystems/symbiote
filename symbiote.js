@@ -47,13 +47,21 @@
 
 	@include:
 		{
+			"harden": "harden",
 			"raze": "raze"
 		}
 	@end-include
 */
 
 if( typeof window == "undefined" ){
+	var harden = require( "harden" );
 	var raze = require( "raze" );
+}
+
+if( typeof window != "undefined" &&
+	!( "harden" in window ) )
+{
+	throw new Error( "harden is not defined" );
 }
 
 if( typeof window != "undefined" &&
@@ -61,6 +69,8 @@ if( typeof window != "undefined" &&
 {
 	throw new Error( "raze is not defined" );
 }
+
+harden( "SYMBIOSIS", "symbiosis" );
 
 var symbiote = function symbiote( child, parent ){
 	/*;
@@ -71,6 +81,10 @@ var symbiote = function symbiote( child, parent ){
 			}
 		@end-meta-configuration
 	*/
+
+	if( child.prototype.initialize.SYMBIOSIS == SYMBIOSIS ){
+		return child;
+	}
 
 	if( typeof child != "function" ){
 		throw new Error( "child is not a function" );
@@ -114,6 +128,8 @@ var symbiote = function symbiote( child, parent ){
 			throw new Error( "failed executing mutual initialize, " + error.stack );
 		}
 	};
+
+	harden( "SYMBIOSIS", SYMBIOSIS, child.prototype.initialize );
 
 	return child;
 };
