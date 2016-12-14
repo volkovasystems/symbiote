@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
   "authors": [
@@ -21,7 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "raze": "^0.0.8",
-    "harden": "^0.3.5"
+    "harden": "^0.9.0",
+    "raze": "^0.5.0",
+    "protype": "^0.4.0"
   }
 }

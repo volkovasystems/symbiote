@@ -53,26 +53,13 @@
 	@end-include
 */
 
-if( typeof window == "undefined" ){
-	var harden = require( "harden" );
-	var raze = require( "raze" );
-}
-
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
-	throw new Error( "harden is not defined" );
-}
-
-if( typeof window != "undefined" &&
-	!( "raze" in window ) )
-{
-	throw new Error( "raze is not defined" );
-}
+const harden = require( "harden" );
+const raze = require( "raze" );
+const protype = require( "protype" );
 
 harden( "SYMBIOSIS", "symbiosis" );
 
-var symbiote = function symbiote( child, parent ){
+const symbiote = function symbiote( child, parent ){
 	/*;
 		@meta-configuration:
 			{
@@ -82,34 +69,31 @@ var symbiote = function symbiote( child, parent ){
 		@end-meta-configuration
 	*/
 
-	if( child.prototype.initialize.SYMBIOSIS == SYMBIOSIS ){
-		return child;
-	}
-
-	if( typeof child != "function" ){
+	if( !protype( child, FUNCTION ) ){
 		throw new Error( "child is not a function" );
 	}
 
-	if( typeof parent != "function" &&
- 		typeof child.prototype.parent != "function" )
-	{
+	if( child && child.prototype && child.prototype.initialize.SYMBIOSIS == SYMBIOSIS ){
+		return child;
+	}
+
+	let parentType = protype( parent );
+	if( !parentType.FUNCTION && !protype( child.prototype.parent, FUNCTION ) ){
 		throw new Error( "parent is not a function" );
 	}
 
-	if( typeof parent != "function" &&
-		typeof child.prototype.parent == "function" )
-	{
+	if( !parentType.FUNCTION && protype( child.prototype.parent, FUNCTION ) ){
 		parent = child.prototype.parent;
 	}
 
-	var childInitialize = child.prototype.initialize;
-	var parentInitialize = parent.prototype.initialize;
+	let childInitialize = child.prototype.initialize;
+	let parentInitialize = parent && parent.prototype && parent.prototype.initialize;
 
-	if( typeof childInitialize != "function" ){
+	if( !protype( childInitialize, FUNCTION ) ){
 		throw new Error( "child initialize is not a function" );
 	}
 
-	if( typeof parentInitialize != "function" ){
+	if( !protype( parentInitialize, FUNCTION ) ){
 		throw new Error( "parent initialize is not a function" );
 	}
 
@@ -125,7 +109,7 @@ var symbiote = function symbiote( child, parent ){
 			return this;
 
 		}catch( error ){
-			throw new Error( "failed executing mutual initialize, " + error.stack );
+			throw new Error( `failed executing mutual initialize, ${ error }` );
 		}
 	};
 
@@ -134,6 +118,4 @@ var symbiote = function symbiote( child, parent ){
 	return child;
 };
 
-if( typeof module != "undefined" ){
-	module.exports = symbiote;
-}
+module.exports = symbiote;
