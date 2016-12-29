@@ -1,10 +1,13 @@
 {
   "name": "symbiote",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
+  "support": "symbiote.support.js",
+  "deploy": "symbiote.deploy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel symbiote.js -o symbiote.support.js && webpack",
+    "test": "mocha symbiote-test.js"
   },
   "repository": {
     "type": "git",
@@ -16,14 +19,26 @@
     "symbiosis"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/symbiote/issues"
   },
   "homepage": "https://github.com/volkovasystems/symbiote#readme",
   "dependencies": {
-    "harden": "^0.9.0",
-    "protype": "^0.4.0",
-    "raze": "^0.5.0"
+    "babel-runtime": "^6.20.0",
+    "harden": "^0.12.0",
+    "protype": "^0.7.0",
+    "raze": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-latest": "^6.16.0",
+    "source-map-loader": "^0.1.5",
+    "webpack": "^1.14.0"
   }
 }
