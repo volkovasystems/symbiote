@@ -53,7 +53,8 @@
 	@include:
 		{
 			"harden": "harden",
-			"raze": "raze"
+			"raze": "raze",
+			"protype": "protype"
 		}
 	@end-include
 */
