@@ -1,63 +1,63 @@
 "use strict";
 
 /*;
-	@module-license:
-		The MIT License (MIT)
-		@mit-license
-
-		Copyright (@c) 2017 Richeve Siodina Bebedor
-		@email: richeve.bebedor@gmail.com
-
-		Permission is hereby granted, free of charge, to any person obtaining a copy
-		of this software and associated documentation files (the "Software"), to deal
-		in the Software without restriction, including without limitation the rights
-		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-		copies of the Software, and to permit persons to whom the Software is
-		furnished to do so, subject to the following conditions:
-
-		The above copyright notice and this permission notice shall be included in all
-		copies or substantial portions of the Software.
-
-		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-		SOFTWARE.
-	@end-module-license
-
-	@module-configuration:
-		{
-			"package": "symbiote",
-			"path": "symbiote/symbiote.js",
-			"file": "symbiote.js",
-			"module": "symbiote",
-			"author": "Richeve S. Bebedor",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
-			],
-			"eMail": "richeve.bebedor@gmail.com",
-			"repository": "https://github.com/volkovasystems/symbiote.git",
-			"test": "symbiote-test.js",
-			"global": true
-		}
-	@end-module-configuration
-
-	@module-documentation:
-
-		Attach child initialization to parent initialization.
-
-	@end-module-documentation
-
-	@include:
-		{
-			"harden": "harden",
-			"raze": "raze",
-			"protype": "protype"
-		}
-	@end-include
-*/
+              	@module-license:
+              		The MIT License (MIT)
+              		@mit-license
+              
+              		Copyright (@c) 2017 Richeve Siodina Bebedor
+              		@email: richeve.bebedor@gmail.com
+              
+              		Permission is hereby granted, free of charge, to any person obtaining a copy
+              		of this software and associated documentation files (the "Software"), to deal
+              		in the Software without restriction, including without limitation the rights
+              		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              		copies of the Software, and to permit persons to whom the Software is
+              		furnished to do so, subject to the following conditions:
+              
+              		The above copyright notice and this permission notice shall be included in all
+              		copies or substantial portions of the Software.
+              
+              		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+              		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+              		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+              		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+              		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+              		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+              		SOFTWARE.
+              	@end-module-license
+              
+              	@module-configuration:
+              		{
+              			"package": "symbiote",
+              			"path": "symbiote/symbiote.js",
+              			"file": "symbiote.js",
+              			"module": "symbiote",
+              			"author": "Richeve S. Bebedor",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+              			],
+              			"eMail": "richeve.bebedor@gmail.com",
+              			"repository": "https://github.com/volkovasystems/symbiote.git",
+              			"test": "symbiote-test.js",
+              			"global": true
+              		}
+              	@end-module-configuration
+              
+              	@module-documentation:
+              
+              		Attach child initialization to parent initialization.
+              
+              	@end-module-documentation
+              
+              	@include:
+              		{
+              			"harden": "harden",
+              			"raze": "raze",
+              			"protype": "protype"
+              		}
+              	@end-include
+              */
 
 var harden = require("harden");
 var raze = require("raze");
@@ -67,13 +67,13 @@ harden("SYMBIOSIS", "symbiosis");
 
 var symbiote = function symbiote(child, parent) {
 	/*;
- 	@meta-configuration:
- 		{
- 			"child:required": "function",
- 			"parent:required": "function"
- 		}
- 	@end-meta-configuration
- */
+                                                 	@meta-configuration:
+                                                 		{
+                                                 			"child:required": "function",
+                                                 			"parent:required": "function"
+                                                 		}
+                                                 	@end-meta-configuration
+                                                 */
 
 	if (!protype(child, FUNCTION)) {
 		throw new Error("child is not a function");
@@ -113,6 +113,7 @@ var symbiote = function symbiote(child, parent) {
 			}
 
 			return this;
+
 		} catch (error) {
 			throw new Error("failed executing mutual initialize, " + error);
 		}
@@ -124,4 +125,5 @@ var symbiote = function symbiote(child, parent) {
 };
 
 module.exports = symbiote;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN5bWJpb3RlLmpzIl0sIm5hbWVzIjpbImhhcmRlbiIsInJlcXVpcmUiLCJyYXplIiwicHJvdHlwZSIsInN5bWJpb3RlIiwiY2hpbGQiLCJwYXJlbnQiLCJGVU5DVElPTiIsIkVycm9yIiwicHJvdG90eXBlIiwiaW5pdGlhbGl6ZSIsIlNZTUJJT1NJUyIsInBhcmVudFR5cGUiLCJjaGlsZEluaXRpYWxpemUiLCJwYXJlbnRJbml0aWFsaXplIiwiYXBwbHkiLCJhcmd1bWVudHMiLCJ0b1N0cmluZyIsImVycm9yIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBMkRBLElBQU1BLFNBQVNDLFFBQVMsUUFBVCxDQUFmO0FBQ0EsSUFBTUMsT0FBT0QsUUFBUyxNQUFULENBQWI7QUFDQSxJQUFNRSxVQUFVRixRQUFTLFNBQVQsQ0FBaEI7O0FBRUFELE9BQVEsV0FBUixFQUFxQixXQUFyQjs7QUFFQSxJQUFNSSxXQUFXLFNBQVNBLFFBQVQsQ0FBbUJDLEtBQW5CLEVBQTBCQyxNQUExQixFQUFrQztBQUNsRDs7Ozs7Ozs7O0FBU0EsS0FBSSxDQUFDSCxRQUFTRSxLQUFULEVBQWdCRSxRQUFoQixDQUFMLEVBQWlDO0FBQ2hDLFFBQU0sSUFBSUMsS0FBSixDQUFXLHlCQUFYLENBQU47QUFDQTs7QUFFRCxLQUFJSCxTQUFTQSxNQUFNSSxTQUFmLElBQTRCSixNQUFNSSxTQUFOLENBQWdCQyxVQUFoQixDQUEyQkMsU0FBM0IsSUFBd0NBLFNBQXhFLEVBQW1GO0FBQ2xGLFNBQU9OLEtBQVA7QUFDQTs7QUFFRCxLQUFJTyxhQUFhVCxRQUFTRyxNQUFULENBQWpCO0FBQ0EsS0FBSSxDQUFDTSxXQUFXTCxRQUFaLElBQXdCLENBQUNKLFFBQVNFLE1BQU1JLFNBQU4sQ0FBZ0JILE1BQXpCLEVBQWlDQyxRQUFqQyxDQUE3QixFQUEwRTtBQUN6RSxRQUFNLElBQUlDLEtBQUosQ0FBVywwQkFBWCxDQUFOO0FBQ0E7O0FBRUQsS0FBSSxDQUFDSSxXQUFXTCxRQUFaLElBQXdCSixRQUFTRSxNQUFNSSxTQUFOLENBQWdCSCxNQUF6QixFQUFpQ0MsUUFBakMsQ0FBNUIsRUFBeUU7QUFDeEVELFdBQVNELE1BQU1JLFNBQU4sQ0FBZ0JILE1BQXpCO0FBQ0E7O0FBRUQsS0FBSU8sa0JBQWtCUixNQUFNSSxTQUFOLENBQWdCQyxVQUF0QztBQUNBLEtBQUlJLG1CQUFtQlIsVUFBVUEsT0FBT0csU0FBakIsSUFBOEJILE9BQU9HLFNBQVAsQ0FBaUJDLFVBQXRFOztBQUVBLEtBQUksQ0FBQ1AsUUFBU1UsZUFBVCxFQUEwQk4sUUFBMUIsQ0FBTCxFQUEyQztBQUMxQyxRQUFNLElBQUlDLEtBQUosQ0FBVyxvQ0FBWCxDQUFOO0FBQ0E7O0FBRUQsS0FBSSxDQUFDTCxRQUFTVyxnQkFBVCxFQUEyQlAsUUFBM0IsQ0FBTCxFQUE0QztBQUMzQyxRQUFNLElBQUlDLEtBQUosQ0FBVyxxQ0FBWCxDQUFOO0FBQ0E7O0FBRURILE9BQU1JLFNBQU4sQ0FBZ0JDLFVBQWhCLEdBQTZCLFNBQVNBLFVBQVQsR0FBc0I7QUFDbEQsTUFBRztBQUNGSSxvQkFBaUJDLEtBQWpCLENBQXdCLElBQXhCLEVBQThCYixLQUFNYyxTQUFOLENBQTlCOztBQUVBO0FBQ0EsT0FBSVgsTUFBTUksU0FBTixDQUFnQkMsVUFBaEIsQ0FBMkJPLFFBQTNCLE1BQTBDSixnQkFBZ0JJLFFBQWhCLEVBQTlDLEVBQTJFO0FBQzFFSixvQkFBZ0JFLEtBQWhCLENBQXVCLElBQXZCLEVBQTZCYixLQUFNYyxTQUFOLENBQTdCO0FBQ0E7O0FBRUQsVUFBTyxJQUFQO0FBRUEsR0FWRCxDQVVDLE9BQU9FLEtBQVAsRUFBYztBQUNkLFNBQU0sSUFBSVYsS0FBSiwwQ0FBbURVLEtBQW5ELENBQU47QUFDQTtBQUNELEVBZEQ7O0FBZ0JBbEIsUUFBUSxXQUFSLEVBQXFCVyxTQUFyQixFQUFnQ04sTUFBTUksU0FBTixDQUFnQkMsVUFBaEQ7O0FBRUEsUUFBT0wsS0FBUDtBQUNBLENBekREOztBQTJEQWMsT0FBT0MsT0FBUCxHQUFpQmhCLFFBQWpCIiwiZmlsZSI6InN5bWJpb3RlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2Ugc3RyaWN0XCI7XG5cbi8qO1xuXHRAbW9kdWxlLWxpY2Vuc2U6XG5cdFx0VGhlIE1JVCBMaWNlbnNlIChNSVQpXG5cdFx0QG1pdC1saWNlbnNlXG5cblx0XHRDb3B5cmlnaHQgKEBjKSAyMDE3IFJpY2hldmUgU2lvZGluYSBCZWJlZG9yXG5cdFx0QGVtYWlsOiByaWNoZXZlLmJlYmVkb3JAZ21haWwuY29tXG5cblx0XHRQZXJtaXNzaW9uIGlzIGhlcmVieSBncmFudGVkLCBmcmVlIG9mIGNoYXJnZSwgdG8gYW55IHBlcnNvbiBvYnRhaW5pbmcgYSBjb3B5XG5cdFx0b2YgdGhpcyBzb2Z0d2FyZSBhbmQgYXNzb2NpYXRlZCBkb2N1bWVudGF0aW9uIGZpbGVzICh0aGUgXCJTb2Z0d2FyZVwiKSwgdG8gZGVhbFxuXHRcdGluIHRoZSBTb2Z0d2FyZSB3aXRob3V0IHJlc3RyaWN0aW9uLCBpbmNsdWRpbmcgd2l0aG91dCBsaW1pdGF0aW9uIHRoZSByaWdodHNcblx0XHR0byB1c2UsIGNvcHksIG1vZGlmeSwgbWVyZ2UsIHB1Ymxpc2gsIGRpc3RyaWJ1dGUsIHN1YmxpY2Vuc2UsIGFuZC9vciBzZWxsXG5cdFx0Y29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzXG5cdFx0ZnVybmlzaGVkIHRvIGRvIHNvLCBzdWJqZWN0IHRvIHRoZSBmb2xsb3dpbmcgY29uZGl0aW9uczpcblxuXHRcdFRoZSBhYm92ZSBjb3B5cmlnaHQgbm90aWNlIGFuZCB0aGlzIHBlcm1pc3Npb24gbm90aWNlIHNoYWxsIGJlIGluY2x1ZGVkIGluIGFsbFxuXHRcdGNvcGllcyBvciBzdWJzdGFudGlhbCBwb3J0aW9ucyBvZiB0aGUgU29mdHdhcmUuXG5cblx0XHRUSEUgU09GVFdBUkUgSVMgUFJPVklERUQgXCJBUyBJU1wiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SXG5cdFx0SU1QTElFRCwgSU5DTFVESU5HIEJVVCBOT1QgTElNSVRFRCBUTyBUSEUgV0FSUkFOVElFUyBPRiBNRVJDSEFOVEFCSUxJVFksXG5cdFx0RklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UgQU5EIE5PTklORlJJTkdFTUVOVC4gSU4gTk8gRVZFTlQgU0hBTEwgVEhFXG5cdFx0QVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUlxuXHRcdExJQUJJTElUWSwgV0hFVEhFUiBJTiBBTiBBQ1RJT04gT0YgQ09OVFJBQ1QsIFRPUlQgT1IgT1RIRVJXSVNFLCBBUklTSU5HIEZST00sXG5cdFx0T1VUIE9GIE9SIElOIENPTk5FQ1RJT04gV0lUSCBUSEUgU09GVFdBUkUgT1IgVEhFIFVTRSBPUiBPVEhFUiBERUFMSU5HUyBJTiBUSEVcblx0XHRTT0ZUV0FSRS5cblx0QGVuZC1tb2R1bGUtbGljZW5zZVxuXG5cdEBtb2R1bGUtY29uZmlndXJhdGlvbjpcblx0XHR7XG5cdFx0XHRcInBhY2thZ2VcIjogXCJzeW1iaW90ZVwiLFxuXHRcdFx0XCJwYXRoXCI6IFwic3ltYmlvdGUvc3ltYmlvdGUuanNcIixcblx0XHRcdFwiZmlsZVwiOiBcInN5bWJpb3RlLmpzXCIsXG5cdFx0XHRcIm1vZHVsZVwiOiBcInN5bWJpb3RlXCIsXG5cdFx0XHRcImF1dGhvclwiOiBcIlJpY2hldmUgUy4gQmViZWRvclwiLFxuXHRcdFx0XCJjb250cmlidXRvcnNcIjogW1xuXHRcdFx0XHRcIkpvaG4gTGVub24gTWFnaGFub3kgPGpvaG5sZW5vbm1hZ2hhbm95QGdtYWlsLmNvbT5cIlxuXHRcdFx0XSxcblx0XHRcdFwiZU1haWxcIjogXCJyaWNoZXZlLmJlYmVkb3JAZ21haWwuY29tXCIsXG5cdFx0XHRcInJlcG9zaXRvcnlcIjogXCJodHRwczovL2dpdGh1Yi5jb20vdm9sa292YXN5c3RlbXMvc3ltYmlvdGUuZ2l0XCIsXG5cdFx0XHRcInRlc3RcIjogXCJzeW1iaW90ZS10ZXN0LmpzXCIsXG5cdFx0XHRcImdsb2JhbFwiOiB0cnVlXG5cdFx0fVxuXHRAZW5kLW1vZHVsZS1jb25maWd1cmF0aW9uXG5cblx0QG1vZHVsZS1kb2N1bWVudGF0aW9uOlxuXG5cdFx0QXR0YWNoIGNoaWxkIGluaXRpYWxpemF0aW9uIHRvIHBhcmVudCBpbml0aWFsaXphdGlvbi5cblxuXHRAZW5kLW1vZHVsZS1kb2N1bWVudGF0aW9uXG5cblx0QGluY2x1ZGU6XG5cdFx0e1xuXHRcdFx0XCJoYXJkZW5cIjogXCJoYXJkZW5cIixcblx0XHRcdFwicmF6ZVwiOiBcInJhemVcIixcblx0XHRcdFwicHJvdHlwZVwiOiBcInByb3R5cGVcIlxuXHRcdH1cblx0QGVuZC1pbmNsdWRlXG4qL1xuXG5jb25zdCBoYXJkZW4gPSByZXF1aXJlKCBcImhhcmRlblwiICk7XG5jb25zdCByYXplID0gcmVxdWlyZSggXCJyYXplXCIgKTtcbmNvbnN0IHByb3R5cGUgPSByZXF1aXJlKCBcInByb3R5cGVcIiApO1xuXG5oYXJkZW4oIFwiU1lNQklPU0lTXCIsIFwic3ltYmlvc2lzXCIgKTtcblxuY29uc3Qgc3ltYmlvdGUgPSBmdW5jdGlvbiBzeW1iaW90ZSggY2hpbGQsIHBhcmVudCApe1xuXHQvKjtcblx0XHRAbWV0YS1jb25maWd1cmF0aW9uOlxuXHRcdFx0e1xuXHRcdFx0XHRcImNoaWxkOnJlcXVpcmVkXCI6IFwiZnVuY3Rpb25cIixcblx0XHRcdFx0XCJwYXJlbnQ6cmVxdWlyZWRcIjogXCJmdW5jdGlvblwiXG5cdFx0XHR9XG5cdFx0QGVuZC1tZXRhLWNvbmZpZ3VyYXRpb25cblx0Ki9cblxuXHRpZiggIXByb3R5cGUoIGNoaWxkLCBGVU5DVElPTiApICl7XG5cdFx0dGhyb3cgbmV3IEVycm9yKCBcImNoaWxkIGlzIG5vdCBhIGZ1bmN0aW9uXCIgKTtcblx0fVxuXG5cdGlmKCBjaGlsZCAmJiBjaGlsZC5wcm90b3R5cGUgJiYgY2hpbGQucHJvdG90eXBlLmluaXRpYWxpemUuU1lNQklPU0lTID09IFNZTUJJT1NJUyApe1xuXHRcdHJldHVybiBjaGlsZDtcblx0fVxuXG5cdGxldCBwYXJlbnRUeXBlID0gcHJvdHlwZSggcGFyZW50ICk7XG5cdGlmKCAhcGFyZW50VHlwZS5GVU5DVElPTiAmJiAhcHJvdHlwZSggY2hpbGQucHJvdG90eXBlLnBhcmVudCwgRlVOQ1RJT04gKSApe1xuXHRcdHRocm93IG5ldyBFcnJvciggXCJwYXJlbnQgaXMgbm90IGEgZnVuY3Rpb25cIiApO1xuXHR9XG5cblx0aWYoICFwYXJlbnRUeXBlLkZVTkNUSU9OICYmIHByb3R5cGUoIGNoaWxkLnByb3RvdHlwZS5wYXJlbnQsIEZVTkNUSU9OICkgKXtcblx0XHRwYXJlbnQgPSBjaGlsZC5wcm90b3R5cGUucGFyZW50O1xuXHR9XG5cblx0bGV0IGNoaWxkSW5pdGlhbGl6ZSA9IGNoaWxkLnByb3RvdHlwZS5pbml0aWFsaXplO1xuXHRsZXQgcGFyZW50SW5pdGlhbGl6ZSA9IHBhcmVudCAmJiBwYXJlbnQucHJvdG90eXBlICYmIHBhcmVudC5wcm90b3R5cGUuaW5pdGlhbGl6ZTtcblxuXHRpZiggIXByb3R5cGUoIGNoaWxkSW5pdGlhbGl6ZSwgRlVOQ1RJT04gKSApe1xuXHRcdHRocm93IG5ldyBFcnJvciggXCJjaGlsZCBpbml0aWFsaXplIGlzIG5vdCBhIGZ1bmN0aW9uXCIgKTtcblx0fVxuXG5cdGlmKCAhcHJvdHlwZSggcGFyZW50SW5pdGlhbGl6ZSwgRlVOQ1RJT04gKSApe1xuXHRcdHRocm93IG5ldyBFcnJvciggXCJwYXJlbnQgaW5pdGlhbGl6ZSBpcyBub3QgYSBmdW5jdGlvblwiICk7XG5cdH1cblxuXHRjaGlsZC5wcm90b3R5cGUuaW5pdGlhbGl6ZSA9IGZ1bmN0aW9uIGluaXRpYWxpemUoICl7XG5cdFx0dHJ5e1xuXHRcdFx0cGFyZW50SW5pdGlhbGl6ZS5hcHBseSggdGhpcywgcmF6ZSggYXJndW1lbnRzICkgKTtcblxuXHRcdFx0Ly86IFRoaXMgd2lsbCBwcmV2ZW50IHJlY3Vyc2l2ZSBjYWxscy5cblx0XHRcdGlmKCBjaGlsZC5wcm90b3R5cGUuaW5pdGlhbGl6ZS50b1N0cmluZyggKSAhPSBjaGlsZEluaXRpYWxpemUudG9TdHJpbmcoICkgKXtcblx0XHRcdFx0Y2hpbGRJbml0aWFsaXplLmFwcGx5KCB0aGlzLCByYXplKCBhcmd1bWVudHMgKSApO1xuXHRcdFx0fVxuXG5cdFx0XHRyZXR1cm4gdGhpcztcblxuXHRcdH1jYXRjaCggZXJyb3IgKXtcblx0XHRcdHRocm93IG5ldyBFcnJvciggYGZhaWxlZCBleGVjdXRpbmcgbXV0dWFsIGluaXRpYWxpemUsICR7IGVycm9yIH1gICk7XG5cdFx0fVxuXHR9O1xuXG5cdGhhcmRlbiggXCJTWU1CSU9TSVNcIiwgU1lNQklPU0lTLCBjaGlsZC5wcm90b3R5cGUuaW5pdGlhbGl6ZSApO1xuXG5cdHJldHVybiBjaGlsZDtcbn07XG5cbm1vZHVsZS5leHBvcnRzID0gc3ltYmlvdGU7XG4iXX0=
+
+//# sourceMappingURL=symbiote.support.js.map
