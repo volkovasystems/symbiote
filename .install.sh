@@ -16,4 +16,5 @@ bower install \
 harden \
 protype \
 raze \
---save
+--save \
+--force-latest
