@@ -53,15 +53,17 @@
               	@include:
               		{
               			"harden": "harden",
-              			"raze": "raze",
               			"protype": "protype"
+              			"raze": "raze",
+              			"stringe": "stringe"
               		}
               	@end-include
               */
 
 var harden = require("harden");
-var raze = require("raze");
 var protype = require("protype");
+var raze = require("raze");
+var stringe = require("stringe");
 
 harden("SYMBIOSIS", "symbiosis");
 
@@ -108,14 +110,14 @@ var symbiote = function symbiote(child, parent) {
 			parentInitialize.apply(this, raze(arguments));
 
 			//: This will prevent recursive calls.
-			if (child.prototype.initialize.toString() != childInitialize.toString()) {
+			if (stringe(child.prototype.initialize) != stringe(childInitialize)) {
 				childInitialize.apply(this, raze(arguments));
 			}
 
 			return this;
 
 		} catch (error) {
-			throw new Error("failed executing mutual initialize, " + error);
+			throw new Error("failed executing mutual initialize, " + error.stack);
 		}
 	};
 
