@@ -53,15 +53,17 @@
 	@include:
 		{
 			"harden": "harden",
-			"raze": "raze",
 			"protype": "protype"
+			"raze": "raze",
+			"stringe": "stringe"
 		}
 	@end-include
 */
 
 const harden = require( "harden" );
-const raze = require( "raze" );
 const protype = require( "protype" );
+const raze = require( "raze" );
+const stringe = require( "stringe" );
 
 harden( "SYMBIOSIS", "symbiosis" );
 
@@ -108,14 +110,14 @@ const symbiote = function symbiote( child, parent ){
 			parentInitialize.apply( this, raze( arguments ) );
 
 			//: This will prevent recursive calls.
-			if( child.prototype.initialize.toString( ) != childInitialize.toString( ) ){
+			if( stringe( child.prototype.initialize ) != stringe( childInitialize ) ){
 				childInitialize.apply( this, raze( arguments ) );
 			}
 
 			return this;
 
 		}catch( error ){
-			throw new Error( `failed executing mutual initialize, ${ error }` );
+			throw new Error( `failed executing mutual initialize, ${ error.stack }` );
 		}
 	};
 
