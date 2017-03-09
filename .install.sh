@@ -3,6 +3,7 @@ babel-runtime \
 harden \
 protype \
 raze \
+stringe \
 --save && \
 yarn add \
 babel-cli \
@@ -16,5 +17,6 @@ bower install \
 harden \
 protype \
 raze \
+stringe \
 --save \
 --force-latest
