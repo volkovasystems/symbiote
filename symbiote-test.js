@@ -1,3 +1,4 @@
+const assert = require( "assert" );
 const symbiote = require( "./symbiote.js" );
 
-console.log( symbiote( ) )
+assert.ok( symbiote( ) );
