@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.deploy.js",
   "support": "symbiote.support.js",
@@ -25,7 +25,7 @@
   "dependencies": {
     "harden": "^0.21.0",
     "protype": "^0.21.0",
-    "raze": "^0.27.0",
-    "stringe": "^0.2.0"
+    "raze": "^0.29.0",
+    "stringe": "^0.3.0"
   }
 }
