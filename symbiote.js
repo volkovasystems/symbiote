@@ -52,76 +52,108 @@
 
 	@include:
 		{
-			"harden": "harden",
+			"burne": "burne",
+			"budge": "budge",
+			"fname": "fname",
+			"leveld": "leveld",
+			"mrkd": "mrkd",
 			"protype": "protype"
 			"raze": "raze",
-			"stringe": "stringe"
+			"truly": "truly",
+			"wauker": "wauker",
+			"wichevr": "wichevr",
+			"xtrak": "xtrak"
 		}
 	@end-include
 */
 
-const harden = require( "harden" );
+const burne = require( "burne" );
+const budge = require( "budge" );
+const fname = require( "fname" );
+const leveld = require( "leveld" );
+const mrkd = require( "mrkd" );
 const protype = require( "protype" );
 const raze = require( "raze" );
-const stringe = require( "stringe" );
+const truly = require( "truly" );
+const wauker = require( "wauker" );
+const wichevr = require( "wichevr" );
+const xtrak = require( "xtrak" );
 
-harden( "SYMBIOSIS", "symbiosis" );
+const SYMBIOSIS = Symbol( "symbiosis" );
+const BLUEPRINT = Symbol( "blueprint" );
+const INITIALIZE = Symbol.for( "initialize" );
 
 const symbiote = function symbiote( child, parent ){
 	/*;
 		@meta-configuration:
 			{
 				"child:required": "function",
-				"parent:required": "function"
+				"parent:required": [
+					"function",
+					"string",
+					Array,
+					"..."
+				]
 			}
 		@end-meta-configuration
 	*/
 
 	if( !protype( child, FUNCTION ) ){
-		throw new Error( "child is not a function" );
+		throw new Error( "invalid child" );
 	}
 
-	if( child && child.prototype && child.prototype.initialize.SYMBIOSIS == SYMBIOSIS ){
-		return child;
-	}
+	let tree = wauker( child );
 
-	let parentType = protype( parent );
-	if( !parentType.FUNCTION && !protype( child.prototype.parent, FUNCTION ) ){
-		throw new Error( "parent is not a function" );
-	}
+	parent = leveld( budge( arguments ) )
+		.filter( ( parent ) => protype( parent, FUNCTION, STRING ) )
+		.map( ( parent ) => {
+			if( protype( parent, FUNCTION ) ){
+				return parent;
 
-	if( !parentType.FUNCTION && protype( child.prototype.parent, FUNCTION ) ){
-		parent = child.prototype.parent;
-	}
+			}else{
+				return xtrak( tree, parent ).pop( );
+			}
+		} )
+		.filter( truly );
 
-	let childInitialize = child.prototype.initialize;
-	let parentInitialize = parent && parent.prototype && parent.prototype.initialize;
+	/*;
+		@note:
+			This will collect all non-symbiosis initialize method.
+		@end-note
+	*/
+	let initializer = [ child ].concat( parent )
+		.map( ( blueprint ) => {
+			let initialize = wichevr( blueprint[ INITIALIZE ],
+				blueprint.prototype.initialize,
+				blueprint.prototype.constructor );
 
-	if( !protype( childInitialize, FUNCTION ) ){
-		throw new Error( "child initialize is not a function" );
-	}
+			if( !mrkd( SYMBIOSIS, initialize, true ) ){
+				//: @note: Cache the initialize method.
+				blueprint[ INITIALIZE ] = initialize;
 
-	if( !protype( parentInitialize, FUNCTION ) ){
-		throw new Error( "parent initialize is not a function" );
-	}
+				//: @note: Mark the initialize method what class it belongs.
+				initialize[ BLUEPRINT ] = fname( blueprint );
+
+				return initialize;
+			}
+		} )
+		.filter( truly )
+		.reverse( );
 
 	child.prototype.initialize = function initialize( ){
-		try{
-			parentInitialize.apply( this, raze( arguments ) );
+		let parameter = raze( arguments );
 
-			//: This will prevent recursive calls.
-			if( stringe( child.prototype.initialize ) != stringe( childInitialize ) ){
-				childInitialize.apply( this, raze( arguments ) );
+		return initializer.reduce( ( result, initialize ) => {
+			try{
+				return initialize.apply( this, parameter );
+
+			}catch( error ){
+				throw new Error( `failed initialize, ${ initialize[ BLUEPRINT ] }, ${ error.stack }` )
 			}
-
-			return this;
-
-		}catch( error ){
-			throw new Error( `failed executing mutual initialize, ${ error.stack }` );
-		}
+		}, this );
 	};
 
-	harden( "SYMBIOSIS", SYMBIOSIS, child.prototype.initialize );
+	burne( SYMBIOSIS, child.prototype.initialize );
 
 	return child;
 };

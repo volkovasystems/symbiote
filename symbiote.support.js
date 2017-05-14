@@ -52,76 +52,108 @@
               
               	@include:
               		{
-              			"harden": "harden",
+              			"burne": "burne",
+              			"budge": "budge",
+              			"fname": "fname",
+              			"leveld": "leveld",
+              			"mrkd": "mrkd",
               			"protype": "protype"
               			"raze": "raze",
-              			"stringe": "stringe"
+              			"truly": "truly",
+              			"wauker": "wauker",
+              			"wichevr": "wichevr",
+              			"xtrak": "xtrak"
               		}
               	@end-include
-              */
+              */var _for = require("babel-runtime/core-js/symbol/for");var _for2 = _interopRequireDefault(_for);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-var harden = require("harden");
+var burne = require("burne");
+var budge = require("budge");
+var fname = require("fname");
+var leveld = require("leveld");
+var mrkd = require("mrkd");
 var protype = require("protype");
 var raze = require("raze");
-var stringe = require("stringe");
+var truly = require("truly");
+var wauker = require("wauker");
+var wichevr = require("wichevr");
+var xtrak = require("xtrak");
 
-harden("SYMBIOSIS", "symbiosis");
+var SYMBIOSIS = (0, _symbol2.default)("symbiosis");
+var BLUEPRINT = (0, _symbol2.default)("blueprint");
+var INITIALIZE = (0, _for2.default)("initialize");
 
 var symbiote = function symbiote(child, parent) {
 	/*;
                                                  	@meta-configuration:
                                                  		{
                                                  			"child:required": "function",
-                                                 			"parent:required": "function"
+                                                 			"parent:required": [
+                                                 				"function",
+                                                 				"string",
+                                                 				Array,
+                                                 				"..."
+                                                 			]
                                                  		}
                                                  	@end-meta-configuration
                                                  */
 
 	if (!protype(child, FUNCTION)) {
-		throw new Error("child is not a function");
+		throw new Error("invalid child");
 	}
 
-	if (child && child.prototype && child.prototype.initialize.SYMBIOSIS == SYMBIOSIS) {
-		return child;
-	}
+	var tree = wauker(child);
 
-	var parentType = protype(parent);
-	if (!parentType.FUNCTION && !protype(child.prototype.parent, FUNCTION)) {
-		throw new Error("parent is not a function");
-	}
+	parent = leveld(budge(arguments)).
+	filter(function (parent) {return protype(parent, FUNCTION, STRING);}).
+	map(function (parent) {
+		if (protype(parent, FUNCTION)) {
+			return parent;
 
-	if (!parentType.FUNCTION && protype(child.prototype.parent, FUNCTION)) {
-		parent = child.prototype.parent;
-	}
-
-	var childInitialize = child.prototype.initialize;
-	var parentInitialize = parent && parent.prototype && parent.prototype.initialize;
-
-	if (!protype(childInitialize, FUNCTION)) {
-		throw new Error("child initialize is not a function");
-	}
-
-	if (!protype(parentInitialize, FUNCTION)) {
-		throw new Error("parent initialize is not a function");
-	}
-
-	child.prototype.initialize = function initialize() {
-		try {
-			parentInitialize.apply(this, raze(arguments));
-
-			//: This will prevent recursive calls.
-			if (stringe(child.prototype.initialize) != stringe(childInitialize)) {
-				childInitialize.apply(this, raze(arguments));
-			}
-
-			return this;
-
-		} catch (error) {
-			throw new Error("failed executing mutual initialize, " + error.stack);
+		} else {
+			return xtrak(tree, parent).pop();
 		}
+	}).
+	filter(truly);
+
+	/*;
+                	@note:
+                		This will collect all non-symbiosis initialize method.
+                	@end-note
+                */
+	var initializer = [child].concat(parent).
+	map(function (blueprint) {
+		var initialize = wichevr(blueprint[INITIALIZE],
+		blueprint.prototype.initialize,
+		blueprint.prototype.constructor);
+
+		if (!mrkd(SYMBIOSIS, initialize, true)) {
+			//: @note: Cache the initialize method.
+			blueprint[INITIALIZE] = initialize;
+
+			//: @note: Mark the initialize method what class it belongs.
+			initialize[BLUEPRINT] = fname(blueprint);
+
+			return initialize;
+		}
+	}).
+	filter(truly).
+	reverse();
+
+	child.prototype.initialize = function initialize() {var _this = this;
+		var parameter = raze(arguments);
+
+		return initializer.reduce(function (result, initialize) {
+			try {
+				return initialize.apply(_this, parameter);
+
+			} catch (error) {
+				throw new Error("failed initialize, " + initialize[BLUEPRINT] + ", " + error.stack);
+			}
+		}, this);
 	};
 
-	harden("SYMBIOSIS", SYMBIOSIS, child.prototype.initialize);
+	burne(SYMBIOSIS, child.prototype.initialize);
 
 	return child;
 };

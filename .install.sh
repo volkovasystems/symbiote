@@ -1,9 +1,15 @@
 yarn add \
 babel-runtime \
-harden \
+burne \
+budge \
+fname \
+leveld \
+mrkd \
 protype \
 raze \
-stringe \
+wauker \
+wichevr \
+xtrak \
 --save && \
 yarn add \
 babel-cli \
@@ -14,9 +20,15 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
-harden \
+burne \
+budge \
+fname \
+leveld \
+mrkd \
 protype \
 raze \
-stringe \
+wauker \
+wichevr \
+xtrak \
 --save \
 --force-latest
