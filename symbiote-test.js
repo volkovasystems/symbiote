@@ -28,7 +28,6 @@ let classA = symbiote( ClassA, ClassB, ClassC );
 
 assert.equal( ( new classA( ) ).initialize( ), "classA", "should be equal" );
 
-assert.deepEqual( cache, [ "classC", "classB", "classA" ],
-"should be deeply equal" );
+assert.deepEqual( cache, [ "classC", "classB", "classA" ], "should be deeply equal" );
 
 console.log( "ok" );
