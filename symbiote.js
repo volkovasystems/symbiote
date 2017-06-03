@@ -53,12 +53,12 @@
 	@include:
 		{
 			"burne": "burne",
-			"budge": "budge",
 			"fname": "fname",
 			"leveld": "leveld",
 			"mrkd": "mrkd",
 			"protype": "protype"
 			"raze": "raze",
+			"shft": "shft",
 			"truly": "truly",
 			"wauker": "wauker",
 			"wichevr": "wichevr",
@@ -68,12 +68,12 @@
 */
 
 const burne = require( "burne" );
-const budge = require( "budge" );
 const fname = require( "fname" );
 const leveld = require( "leveld" );
 const mrkd = require( "mrkd" );
 const protype = require( "protype" );
 const raze = require( "raze" );
+const shft = require( "shft" );
 const truly = require( "truly" );
 const wauker = require( "wauker" );
 const wichevr = require( "wichevr" );
@@ -104,7 +104,7 @@ const symbiote = function symbiote( child, parent ){
 
 	let tree = wauker( child );
 
-	parent = leveld( budge( arguments ) )
+	parent = leveld( shft( arguments ) )
 		.filter( ( parent ) => protype( parent, FUNCTION, STRING ) )
 		.map( ( parent ) => {
 			if( protype( parent, FUNCTION ) ){
