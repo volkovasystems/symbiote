@@ -53,12 +53,12 @@
               	@include:
               		{
               			"burne": "burne",
-              			"budge": "budge",
               			"fname": "fname",
               			"leveld": "leveld",
               			"mrkd": "mrkd",
               			"protype": "protype"
               			"raze": "raze",
+              			"shft": "shft",
               			"truly": "truly",
               			"wauker": "wauker",
               			"wichevr": "wichevr",
@@ -68,12 +68,12 @@
               */var _for = require("babel-runtime/core-js/symbol/for");var _for2 = _interopRequireDefault(_for);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var burne = require("burne");
-var budge = require("budge");
 var fname = require("fname");
 var leveld = require("leveld");
 var mrkd = require("mrkd");
 var protype = require("protype");
 var raze = require("raze");
+var shft = require("shft");
 var truly = require("truly");
 var wauker = require("wauker");
 var wichevr = require("wichevr");
@@ -104,7 +104,7 @@ var symbiote = function symbiote(child, parent) {
 
 	var tree = wauker(child);
 
-	parent = leveld(budge(arguments)).
+	parent = leveld(shft(arguments)).
 	filter(function (parent) {return protype(parent, FUNCTION, STRING);}).
 	map(function (parent) {
 		if (protype(parent, FUNCTION)) {
