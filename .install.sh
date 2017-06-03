@@ -1,12 +1,12 @@
 yarn add \
 babel-runtime \
 burne \
-budge \
 fname \
 leveld \
 mrkd \
 protype \
 raze \
+shft \
 wauker \
 wichevr \
 xtrak \
@@ -21,12 +21,12 @@ webpack \
 --dev && \
 bower install \
 burne \
-budge \
 fname \
 leveld \
 mrkd \
 protype \
 raze \
+shft \
 wauker \
 wichevr \
 xtrak \
