@@ -45,13 +45,12 @@
 	@end-module-configuration
 
 	@module-documentation:
-
 		Attach child initialization to parent initialization.
-
 	@end-module-documentation
 
 	@include:
 		{
+			"arid": "arid",
 			"burne": "burne",
 			"fname": "fname",
 			"leveld": "leveld",
@@ -67,6 +66,7 @@
 	@end-include
 */
 
+const arid = require( "arid" );
 const burne = require( "burne" );
 const fname = require( "fname" );
 const leveld = require( "leveld" );
@@ -104,17 +104,34 @@ const symbiote = function symbiote( child, parent ){
 
 	let tree = wauker( child );
 
-	parent = leveld( shft( arguments ) )
-		.filter( ( parent ) => protype( parent, FUNCTION, STRING ) )
-		.map( ( parent ) => {
-			if( protype( parent, FUNCTION ) ){
-				return parent;
+	if( arguments.length > 1 ){
+		parent = leveld( shft( arguments ) )
+			.filter( ( parent ) => protype( parent, FUNCTION, STRING ) )
+			.map( ( parent ) => {
+				if( protype( parent, FUNCTION ) ){
+					return parent;
 
-			}else{
-				return xtrak( tree, parent ).pop( );
-			}
-		} )
-		.filter( truly );
+				}else{
+					return xtrak( tree, parent ).pop( );
+				}
+			} )
+			.filter( truly );
+
+	}else{
+		parent = shft( tree );
+	}
+
+	/*
+		@note:
+			If there are no given parent then it will get the inheritance
+				tree of the child and construct the initializer using that inheritance tree.
+
+			This is to ensure that we are using symbiosis properly.
+		@end-note
+	*/
+	if( arid( parent ) ){
+		parent = shft( tree );
+	}
 
 	/*;
 		@note:

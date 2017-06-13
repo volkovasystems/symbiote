@@ -45,13 +45,12 @@
               	@end-module-configuration
               
               	@module-documentation:
-              
               		Attach child initialization to parent initialization.
-              
               	@end-module-documentation
               
               	@include:
               		{
+              			"arid": "arid",
               			"burne": "burne",
               			"fname": "fname",
               			"leveld": "leveld",
@@ -67,6 +66,7 @@
               	@end-include
               */var _for = require("babel-runtime/core-js/symbol/for");var _for2 = _interopRequireDefault(_for);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
+var arid = require("arid");
 var burne = require("burne");
 var fname = require("fname");
 var leveld = require("leveld");
@@ -104,23 +104,40 @@ var symbiote = function symbiote(child, parent) {
 
 	var tree = wauker(child);
 
-	parent = leveld(shft(arguments)).
-	filter(function (parent) {return protype(parent, FUNCTION, STRING);}).
-	map(function (parent) {
-		if (protype(parent, FUNCTION)) {
-			return parent;
+	if (arguments.length > 1) {
+		parent = leveld(shft(arguments)).
+		filter(function (parent) {return protype(parent, FUNCTION, STRING);}).
+		map(function (parent) {
+			if (protype(parent, FUNCTION)) {
+				return parent;
 
-		} else {
-			return xtrak(tree, parent).pop();
-		}
-	}).
-	filter(truly);
+			} else {
+				return xtrak(tree, parent).pop();
+			}
+		}).
+		filter(truly);
+
+	} else {
+		parent = shft(tree);
+	}
+
+	/*
+   	@note:
+   		If there are no given parent then it will get the inheritance
+   			tree of the child and construct the initializer using that inheritance tree.
+   			This is to ensure that we are using symbiosis properly.
+   	@end-note
+   */
+
+	if (arid(parent)) {
+		parent = shft(tree);
+	}
 
 	/*;
-                	@note:
-                		This will collect all non-symbiosis initialize method.
-                	@end-note
-                */
+   	@note:
+   		This will collect all non-symbiosis initialize method.
+   	@end-note
+   */
 	var initializer = [child].concat(parent).
 	map(function (blueprint) {
 		var initialize = wichevr(blueprint[INITIALIZE],

@@ -1,5 +1,6 @@
 yarn add \
 babel-runtime \
+arid \
 burne \
 fname \
 leveld \
@@ -20,6 +21,7 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
+arid \
 burne \
 fname \
 leveld \

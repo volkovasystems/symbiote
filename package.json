@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
   "support": "symbiote.support.js",
@@ -15,7 +15,9 @@
     "url": "git+https://github.com/volkovasystems/symbiote.git"
   },
   "keywords": [
-    "class-initialization",
+    "attach",
+    "child",
+    "parent",
     "initialization",
     "symbiosis"
   ],
@@ -29,21 +31,22 @@
   },
   "homepage": "https://github.com/volkovasystems/symbiote#readme",
   "dependencies": {
+    "arid": "^0.26.0",
     "babel-runtime": "^6.23.0",
-    "burne": "^0.1.0",
-    "fname": "^0.8.0",
-    "leveld": "^0.4.0",
-    "mrkd": "^0.5.0",
-    "protype": "^0.21.0",
-    "raze": "^0.29.0",
-    "shft": "^0.1.0",
-    "wauker": "^0.14.0",
-    "wichevr": "^0.9.0",
+    "burne": "^0.3.0",
+    "fname": "^0.9.0",
+    "leveld": "^0.5.0",
+    "mrkd": "^0.6.0",
+    "protype": "^0.22.0",
+    "raze": "^0.30.0",
+    "shft": "^0.2.0",
+    "wauker": "^0.16.0",
+    "wichevr": "^0.10.0",
     "xtrak": "^0.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "source-map-loader": "^0.2.1",
