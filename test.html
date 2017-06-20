@@ -1,8 +1,72 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./symbiote.deploy.js">
-		</script>
+		<title>symbiote unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./symbiote.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "symbiote unit test", function( assert ) {
+
+				let cache = [ ];
+
+				class ClassC{
+					initialize( ){
+						cache.push( "classC" );
+
+						( this.data = this.data || [ ] ).push( "C" );
+
+						return "classC";
+					}
+				}
+
+				class ClassB extends ClassC {
+					constructor( ){ super( ); }
+					initialize( ){
+						cache.push( "classB" );
+
+						( this.data = this.data || [ ] ).push( "B" )
+
+						return "classB";
+					}
+				}
+
+				class ClassA extends ClassB {
+					constructor( ){ super( ); }
+					initialize( ){
+						cache.push( "classA" );
+
+						( this.data = this.data || [ ] ).push( "A" )
+
+						return "classA";
+					}
+				}
+
+				let classA = symbiote( ClassA, ClassB, ClassC );
+
+				assert.equal( ( new classA( ) ).initialize( ), "classA", "should be equal" );
+
+				assert.deepEqual( cache, [ "classC", "classB", "classA" ], "should be deeply equal" );
+
+				let A = symbiote( ClassA );
+
+				assert.equal( ( new A( ) ).initialize( ), "classA", "should be equal" );
+
+				let a = new A( );
+				a.initialize( );
+				assert.deepEqual( a.data, [ "C", "B", "A" ], "should be equal" );
+				
+			} );
+		</script>
+	</body>
 </html>
