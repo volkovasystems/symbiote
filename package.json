@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.js",
   "support": "symbiote.support.js",
@@ -23,7 +23,8 @@
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
   "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+    "Vinse Vinalon <vinsevinalon@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -36,13 +37,13 @@
     "burne": "^0.3.0",
     "fname": "^0.9.0",
     "leveld": "^0.5.0",
-    "mrkd": "^0.6.0",
+    "mrkd": "^0.8.0",
     "protype": "^0.22.0",
     "raze": "^0.30.0",
     "shft": "^0.2.0",
     "wauker": "^0.16.0",
     "wichevr": "^0.10.0",
-    "xtrak": "^0.4.0"
+    "xtrak": "^0.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -50,6 +51,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "source-map-loader": "^0.2.1",
-    "webpack": "^2.6.1"
+    "webpack": "^3.0.0"
   }
 }
