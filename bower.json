@@ -1,6 +1,6 @@
 {
   "name": "symbiote",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Attach child initialization to parent initialization.",
   "main": "symbiote.deploy.js",
   "support": "symbiote.support.js",
@@ -26,16 +26,16 @@
     "tests"
   ],
   "dependencies": {
-    "arid": "^0.26.0",
-    "burne": "^0.4.0",
-    "fname": "^0.9.0",
-    "leveld": "^0.5.0",
-    "mrkd": "^0.8.0",
-    "protype": "^0.22.0",
-    "raze": "^0.30.0",
-    "shft": "^0.2.0",
-    "wauker": "^0.16.0",
-    "wichevr": "^0.10.0",
-    "xtrak": "^0.5.0"
+    "arid": "^0.30.0",
+    "burne": "^0.6.0",
+    "fname": "^0.13.0",
+    "leveld": "^0.8.0",
+    "mrkd": "^0.11.0",
+    "protype": "^0.24.0",
+    "raze": "^0.34.0",
+    "shft": "^0.5.0",
+    "wauker": "^0.21.0",
+    "wichevr": "^0.14.0",
+    "xtrak": "^0.7.0"
   }
 }

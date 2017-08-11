@@ -99,7 +99,7 @@ const symbiote = function symbiote( child, parent ){
 		@end-meta-configuration
 	*/
 
-	if( !protype( child, FUNCTION ) ){
+	if( typeof child != "function" ){
 		throw new Error( "invalid child" );
 	}
 
@@ -109,7 +109,7 @@ const symbiote = function symbiote( child, parent ){
 		parent = leveld( shft( arguments ) )
 			.filter( ( parent ) => protype( parent, FUNCTION, STRING ) )
 			.map( ( parent ) => {
-				if( protype( parent, FUNCTION ) ){
+				if( typeof parent == "function" ){
 					return parent;
 
 				}else{
