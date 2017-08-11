@@ -54,18 +54,18 @@
 
 				let classA = symbiote( ClassA, ClassB, ClassC );
 
-				assert.equal( ( new classA( ) ).initialize( ), "classA", "should be equal" );
+				assert.equal( ( new classA( ) ).initialize( ), "classA", "should be equal to 'classA'" );
 
-				assert.deepEqual( cache, [ "classC", "classB", "classA" ], "should be deeply equal" );
+				assert.deepEqual( cache, [ "classC", "classB", "classA" ], "should be equal to [ 'classC', 'classB', 'classA' ]" );
 
 				let A = symbiote( ClassA );
 
-				assert.equal( ( new A( ) ).initialize( ), "classA", "should be equal" );
+				assert.equal( ( new A( ) ).initialize( ), "classA", "should be equal to 'classA'" );
 
 				let a = new A( );
 				a.initialize( );
-				assert.deepEqual( a.data, [ "C", "B", "A" ], "should be equal" );
-				
+				assert.deepEqual( a.data, [ "C", "B", "A" ], "should be equal to [ 'C', 'B', 'A' ]" );
+
 			} );
 		</script>
 	</body>
