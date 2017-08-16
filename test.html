@@ -1,72 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>symbiote unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:symbiote</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
-
-		<script type="application/javascript" src="./symbiote.deploy.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "symbiote unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				let cache = [ ];
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				class ClassC{
-					initialize( ){
-						cache.push( "classC" );
-
-						( this.data = this.data || [ ] ).push( "C" );
-
-						return "classC";
-					}
-				}
-
-				class ClassB extends ClassC {
-					constructor( ){ super( ); }
-					initialize( ){
-						cache.push( "classB" );
-
-						( this.data = this.data || [ ] ).push( "B" )
-
-						return "classB";
-					}
-				}
-
-				class ClassA extends ClassB {
-					constructor( ){ super( ); }
-					initialize( ){
-						cache.push( "classA" );
-
-						( this.data = this.data || [ ] ).push( "A" )
-
-						return "classA";
-					}
-				}
-
-				let classA = symbiote( ClassA, ClassB, ClassC );
-
-				assert.equal( ( new classA( ) ).initialize( ), "classA", "should be equal to 'classA'" );
-
-				assert.deepEqual( cache, [ "classC", "classB", "classA" ], "should be equal to [ 'classC', 'classB', 'classA' ]" );
-
-				let A = symbiote( ClassA );
-
-				assert.equal( ( new A( ) ).initialize( ), "classA", "should be equal to 'classA'" );
-
-				let a = new A( );
-				a.initialize( );
-				assert.deepEqual( a.data, [ "C", "B", "A" ], "should be equal to [ 'C', 'B', 'A' ]" );
-
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>
